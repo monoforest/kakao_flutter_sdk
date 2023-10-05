@@ -6,7 +6,7 @@ String androidChannelIntent(String scheme, String channelPublicId, String path,
     {String? queryParameters}) {
   var customScheme = Uri.parse(scheme);
 
-  final query = queryParameters.isNull ? '' : '?$queryParameters';
+  final query = (queryParameters as JSAny).isNull ? '' : '?$queryParameters';
   final intent = [
     'intent://${customScheme.authority}/$path$query#Intent',
     'scheme=${customScheme.scheme}',
